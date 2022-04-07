@@ -1,11 +1,10 @@
 <template>
   <div>
-    <h1>Página sobre</h1>
+    <h1>Página Dashboard</h1>
   </div>
 </template>
 
 <script>
 export default {
-  
 }
 </script>
