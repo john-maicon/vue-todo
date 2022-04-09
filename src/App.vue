@@ -1,11 +1,26 @@
 <template>
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" app>
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title class="text-h6"> Vue todo </v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
+      <v-img
+        src="https://picsum.photos/1920/1080?random"
+        alt=""
+        dark
+        class="pt-5 text-center"
+      >
+       <v-avatar>
+      <img
+        src="https://cdn.vuetifyjs.com/images/john.jpg"
+        alt="John"
+        size="100"
+      >
+    </v-avatar>
+
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title class="text-h6"> John </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-img>
 
       <v-divider></v-divider>
 
@@ -27,7 +42,6 @@
       </v-list>
     </v-navigation-drawer>
 
-
     <v-app-bar
       app
       dark
@@ -46,10 +60,18 @@
       </template>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-app-bar-title>Lista de tarefas</v-app-bar-title>
 
-      <v-spacer></v-spacer>
+    <center>
+      <v-app-bar-title>
+       
+        <InputTaskNew />
+      </v-app-bar-title>
+    </center>
 
+
+
+   <v-spacer></v-spacer>
+    <!--
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
@@ -60,7 +82,7 @@
 
       <v-btn icon>
         <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
+      </v-btn> -->
     </v-app-bar>
 
     <v-main>
@@ -70,7 +92,11 @@
 </template>
 
 <script>
+import InputTaskNew from '../src/components/InputTaskNew.vue'
 export default {
+  components:{
+    InputTaskNew
+  },
   data: () => ({
     drawer: true,
     items: [

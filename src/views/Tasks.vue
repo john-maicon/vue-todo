@@ -1,43 +1,33 @@
 <template>
   <div>
-    <v-list flat subheader>
-          <v-col cols="12">
-        <v-text-field
-          v-model="task"
-          label="Qual a sua tarefa?"
-          outlined
-          clearable
-          @keyup.enter="handleAddTask"
-        ></v-text-field>
-      </v-col>
-
-      <v-list-item-group v-model="settings" multiple active-class="">
-        <div v-for="(item, index) in $store.state.tasks" :key="index">
-          <Task :task="item" />
-        </div>
-      </v-list-item-group>
-    </v-list>
+      <ListTasks />
+      <div
+      v-if="!$store.state.tasks.length"
+       class="mt-16 animate__animated animate__backInLeft">
+      <center>  <v-icon size="100" color="primary">mdi-check</v-icon>
+      <div class="text-h5 primary--text">
+        Nenhuma tarefa
+      </div>
+      </center>
+      </div>
   </div>
 </template>
 
 <script>
-import Task from "../components/tasks/Task.vue";
+import ListTasks from "../components/tasks/ListTasks.vue";
 
 export default {
   components: {
-    Task,
+    ListTasks,
   },
   data() {
     return {
-      
       task: null,
     };
   },
-  methods: {
-    handleAddTask() {
-        this.$store.commit('addTask', this.task)
-        this.task = null;
-    },
+  created() {
+    this.$store.commit("getTasks");
   },
+
 };
 </script>
